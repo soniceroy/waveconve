@@ -1,0 +1,31 @@
+################################################
+Events from signal
+
+parameters:
+    # currently not needed for the algorithm, but probably will be useful for the final product
+    max_allowed_signal
+    wave_amplitude_allowance # might end up in the algorithm
+    pre_gain
+    post_gain
+
+algorithm:
+    # Basic idea is that we are outputting the peak of every wave.
+    # Once the signal dips from the peak, we know that the last highest
+    # point in the signal was the peak.
+    # We also know that if we hold on to the last peak, we will miss
+    # the other peaks.
+    current_peak = negative_infinity
+    for each signal_value in wave:
+        if signal_value > current_peak:
+            current_peak = signal_value
+        elif current_peak != negative_infinity:
+            output(current_peak)
+            current_peak = negative_infinity
+
+    # probably need some data from the wave (or outer parameter to tweak) so that
+    # the scaling to midi will work. Currently it is a wave of unknown amplitude,
+    # so I'm puzzled as to how to convert that to a number between 1 and 127 (midi velocity).
+
+
+
+################################################
