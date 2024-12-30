@@ -1,0 +1,9 @@
+[package]
+name = "waveconve"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+midi-msg = "0.7.5"
+midir = "0.10.1"
+rodio = "0.20.1"
