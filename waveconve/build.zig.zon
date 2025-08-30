@@ -1,0 +1,9 @@
+{
+    .name = "zig_lv2_a2m_plugin",
+    .version = "0.1.0",
+    .dependencies = {},
+    .paths = .{
+        .src = "src",
+        .lv2 = "my-a2m.lv2",
+    },
+}

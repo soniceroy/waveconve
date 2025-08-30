@@ -1,0 +1,34 @@
+@prefix lv2:   <http://lv2plug.in/ns/lv2core#> .
+@prefix atom:  <http://lv2plug.in/ns/ext/atom#> .
+@prefix midi:  <http://lv2plug.in/ns/ext/midi#> .
+@prefix units: <http://lv2plug.in/ns/extensions/units#> .
+@prefix doap:  <http://usefulinc.com/ns/doap#> .
+
+<http://example.org/my-a2m>
+    a lv2:Plugin , lv2:UtilityPlugin ;
+    doap:name "My Audio-to-MIDI (Zig/LV2)" ;
+
+    lv2:port [
+        a lv2:AudioPort , lv2:InputPort ;
+        lv2:index 0 ;
+        lv2:symbol "in_l" ;
+        lv2:name "Input" ;
+    ] ,
+    [
+        a lv2:OutputPort , atom:AtomPort ;
+        lv2:index 1 ;
+        lv2:symbol "midi_out" ;
+        lv2:name "MIDI Out" ;
+        atom:bufferType atom:Sequence ;
+        atom:supports midi:MidiEvent ;
+    ] ,
+    [
+        a lv2:ControlPort , lv2:InputPort ;
+        lv2:index 2 ;
+        lv2:symbol "threshold" ;
+        lv2:name "Threshold" ;
+        lv2:default 0.10 ;
+        lv2:minimum 0.00 ;
+        lv2:maximum 1.00 ;
+        units:unit units:coef ;
+    ] .
